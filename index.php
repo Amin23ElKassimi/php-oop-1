@@ -7,8 +7,9 @@ vengono istanziati almeno due oggetti ‘Movie’ e stampati a schermo i valori 
 
 
 <?php
-include_once __DIR__ . '/Models/Product.php';
+// Import delle classi da usare
 include_once __DIR__ . '/Models/Category.php';
+include_once __DIR__ . '/Models/Movie.php';
 
 //Argomentare le nueve istanze di Categorie 
 $vintageElectronicsCat = new Category('Vintage Electronics', 'Dispositivi elettronici vintage', 'https://cdnmetv.metv.com/XgGp6-1652303066-1697-lists-untitled_design_%283%29.jpg');
@@ -16,10 +17,11 @@ $wearables = new Category('Wearables', 'Dispositivi indossabili inutili', 'https
 
 
 // Argomentare le nueve istanze di Prodotti
-$tvProduct = new Product('Vintage TV','Televisore a tubo catodico finissimo, appena 55cm', 33.99, $vintageElectronicsCat);
-$watchProduct = new Product('Inutilwatch', 'Il nuovo smartwatch che chiede tutto al proprietario', 77.33, $wearables);
+// Creare due oggetti Movie
+$movie1 = new Movie("Inception", $vintageElectronicsCat, 2010, 148);
+$movie2 = new Movie("The Shawshank Redemption", $wearables, 1994, 142);
 // Array Di prodotti
-$products = [ $tvProduct, $watchProduct, $tvProduct, $watchProduct, $tvProduct, $watchProduct, $tvProduct, $watchProduct ];
+$movies = [ $movie1, $movie2, $movie1, $movie2];
 
 ?>
 
@@ -46,22 +48,23 @@ $products = [ $tvProduct, $watchProduct, $tvProduct, $watchProduct, $tvProduct, 
     </header>
     <main class="container">
         <section class="row">
-            <?php foreach ($products as $product) { ?>
+            <!-- Ciclo For che scrolla l'array usata come libreria film -->
+            <?php foreach ($movies as $movie) { ?>
                 <div class="col-3">
                     <div class="card">
-                        <img src="<?php echo $product->category->imageUrl; ?>" class="card-img-top img-fluid" alt="...">
+                        <img src="<?php echo $movie->genre->imageUrl; ?>" class="card-img-top img-fluid" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <?php echo $product->description; ?>
+                                <?php echo $movie->description; ?>
                             </h5>
                             <h6 class="card-subtitle">
-                                <?php echo $product->category->name; ?>
+                                <?php echo $movie->category->name; ?>
                             </h6>
                             <p class="card-text">
-                                <?php echo $product->description; ?>
+                                <?php echo $movie->description; ?>
                             </p>
                             <a href="#" class="btn btn-primary">
-                                Acquista per soli <?php echo $product->getPrice(); ?>&euro;
+                                Acquista per soli <?php echo $movie->getPrice(); ?>&euro;
                             </a>
                         </div>
                     </div>
