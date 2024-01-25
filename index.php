@@ -18,8 +18,8 @@ $wearables = new Category('Wearables', 'Dispositivi indossabili inutili', 'https
 
 // Argomentare le nueve istanze di Prodotti
 // Creare due oggetti Movie
-$movie1 = new Movie("Inception", $vintageElectronicsCat, 2010, 148);
-$movie2 = new Movie("The Shawshank Redemption", $wearables, 1994, 142);
+$movie1 = new Movie("Inception", $vintageElectronicsCat, 2010, 148,4.99);
+$movie2 = new Movie("The Shawshank Redemption", $wearables, 1994, 142,12.50);
 // Array Di prodotti
 $movies = [ $movie1, $movie2, $movie1, $movie2];
 
@@ -41,27 +41,28 @@ $movies = [ $movie1, $movie2, $movie1, $movie2];
         <div class="row text-center mb-3 p-3">
             <div class="col-12">
                 <h1>
-                    PHP Object Oriented Programming
+                    Netflix
                 </h1>
             </div>
         </div>
     </header>
+    <!-- Libreria -->
     <main class="container">
         <section class="row">
             <!-- Ciclo For che scrolla l'array usata come libreria film -->
             <?php foreach ($movies as $movie) { ?>
                 <div class="col-3">
-                    <div class="card">
+                    <div class="card text-center">
                         <img src="<?php echo $movie->genre->imageUrl; ?>" class="card-img-top img-fluid" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <?php echo $movie->description; ?>
+                                <?php echo $movie->title; ?>
                             </h5>
                             <h6 class="card-subtitle">
-                                <?php echo $movie->category->name; ?>
+                                <?php echo $movie->genre->name; ?>
                             </h6>
                             <p class="card-text">
-                                <?php echo $movie->description; ?>
+                                Durata <?php echo $movie->duration; ?> Minuti
                             </p>
                             <a href="#" class="btn btn-primary">
                                 Acquista per soli <?php echo $movie->getPrice(); ?>&euro;

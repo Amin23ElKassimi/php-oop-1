@@ -4,17 +4,12 @@
  */
 class Movie {
     
-    /** @var string Titolo del film. */
     public $title;
-
-    /** @var string Genere del film. */
     public $genre;
-
-    /** @var int Anno di uscita del film. */
     public $releaseYear;
-
-    /** @var int Durata del film in minuti. */
     public $duration;
+    public $price;
+    
 
     /**
      * Costruttore della classe Movie. Usato come guida per i Prossimi Programmatori o x te stesso a mettere mano sulle funzioni dopo molto tempo.
@@ -23,12 +18,19 @@ class Movie {
      * @param Category $genre      Genere del film.
      * @param int    $releaseYear Anno di uscita del film.
      * @param int    $duration   Durata del film in minuti.
+     * @param float $_price The current price of the product
      */
-    public function __construct(string $title,Category $genre,int $releaseYear,int $duration) {
+    public function __construct(string $title,Category $genre,int $releaseYear,int $duration, float $price) {
         $this->title = $title;
         $this->genre = $genre;
         $this->releaseYear = $releaseYear;
         $this->duration = $duration;
+        $this->price = $price;
+    }
+
+    
+    public function getPrice(){
+        return $this->price;
     }
 
     // /**
