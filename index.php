@@ -11,17 +11,9 @@ vengono istanziati almeno due oggetti ‘Movie’ e stampati a schermo i valori 
 include_once __DIR__ . '/Models/Category.php';
 include_once __DIR__ . '/Models/Movie.php';
 
-//Argomentare le nueve istanze di Categorie 
-$vintageElectronicsCat = new Category('Vintage Electronics', 'Dispositivi elettronici vintage', 'https://cdnmetv.metv.com/XgGp6-1652303066-1697-lists-untitled_design_%283%29.jpg');
-$wearables = new Category('Wearables', 'Dispositivi indossabili inutili', 'https://i0.wp.com/circuitcellar.com/wp-content/uploads/2022/12/385-Al-SF-Lead.jpg?fit=1258%2C921&ssl=1');
 
-
-// Argomentare le nueve istanze di Prodotti
-// Creare due oggetti Movie
-$movie1 = new Movie("Inception", $vintageElectronicsCat, 2010, 148,4.99);
-$movie2 = new Movie("The Shawshank Redemption", $wearables, 1994, 142,12.50);
 // Array Di prodotti
-$movies = [ $movie1, $movie2, $movie1, $movie2];
+$movies = [ $inception, $redemption, $fastfurios, $redemption];
 
 ?>
 
@@ -29,6 +21,7 @@ $movies = [ $movie1, $movie2, $movie1, $movie2];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Modalita Vieoport Responsive -->
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Netflix</title>
     <!-- bootstrap -->
@@ -53,17 +46,21 @@ $movies = [ $movie1, $movie2, $movie1, $movie2];
             <?php foreach ($movies as $movie) { ?>
                 <div class="col-3">
                     <div class="card text-center">
-                        <img src="<?php echo $movie->genre->imageUrl; ?>" class="card-img-top img-fluid" alt="...">
+                        <img src="<?php echo $movie->imageUrl; ?>" class="card-img-top img-fluid" alt="...">
                         <div class="card-body">
+                            <!-- Titolo -->
                             <h5 class="card-title">
                                 <?php echo $movie->title; ?>
                             </h5>
+                            <!-- Genere -->
                             <h6 class="card-subtitle">
                                 <?php echo $movie->genre->name; ?>
                             </h6>
+                            <!-- Durata -->
                             <p class="card-text">
                                 Durata <?php echo $movie->duration; ?> Minuti
                             </p>
+                            <!-- Costo e Azione Acquista -->
                             <a href="#" class="btn btn-primary">
                                 Acquista per soli <?php echo $movie->getPrice(); ?>&euro;
                             </a>

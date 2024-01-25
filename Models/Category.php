@@ -11,18 +11,19 @@
 class Category{
     public $name;
     public $description;
-    public $imageUrl;
 
     /**
      * Constructs a new instance of type Category, given a name, a description and an optional image string url.
      *
      * @param string $_name Category's name
      * @param string $_description Category's description
-     * @param string|null $_imageUrl Category's image url, optional.
      */
-    public function __construct(string $_name, string $_description, string $_imageUrl = null){
+    public function __construct(string $_name, string $_description){
         $this->name = $_name;
         $this->description = $_description;
-        $this->imageUrl = $_imageUrl;
     }
 }
+
+//Argomentare le nueve istanze di Categorie 
+$dramma = new Category('Dramma', 'Appartenente alla categoria film Drammatici');
+$azione = new Category('Azione', 'Appartenente alla categoria film Azione');
